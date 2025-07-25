@@ -1,0 +1,3111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SwarnaBhoomi - Premium Villa Plots & Real Estate Projects</title>
+    
+    <!-- Preload hero background image for better performance -->
+    <link rel="preload" href="https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" as="image">
+    
+    <!-- Boxicons CSS -->
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    
+    <!-- React CDN -->
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    
+    <style>
+        /* Complete Real Estate Website Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+                'Ubuntu', 'Cantarell', 'Open Sans', 'Helvetica Neue', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* Header Styles */
+        .header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #E6A519;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-link:hover {
+            color: #E6A519;
+        }
+
+        /* Hero Section */
+        .hero {
+            /* Elegant fallback gradient */
+            background: linear-gradient(135deg, #E6A519 0%, #B8860B 100%);
+            
+            /* Main background with overlay */
+            background: linear-gradient(135deg, rgba(230, 165, 25, 0.75), rgba(184, 134, 11, 0.65)),
+                        url('https://images.unsplash.com/photo-1523217582562-09d0def993a6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+
+        /* Alternative row house backgrounds - uncomment to use */
+        
+        /* Option 1: Victorian row houses with gardens */
+        /*
+        .hero {
+            background: linear-gradient(135deg, rgba(230, 165, 25, 0.75), rgba(184, 134, 11, 0.65)),
+                        url('https://images.unsplash.com/photo-1564013799919-ab600027ffc6?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        */
+
+        /* Option 2: Modern townhouses with landscaping */
+        /*
+        .hero {
+            background: linear-gradient(135deg, rgba(230, 165, 25, 0.75), rgba(184, 134, 11, 0.65)),
+                        url('https://images.unsplash.com/photo-1609766975192-b3a9838d3e90?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        */
+
+        /* Option 3: Simple fallback with solid color (if images don't load) */
+        /*
+        .hero {
+            background: linear-gradient(135deg, #E6A519 0%, #B8860B 100%);
+        }
+        */
+
+        /* Add subtle animation to hero content */
+        .hero-content {
+            animation: fadeInUp 1.2s ease-out;
+            z-index: 2;
+            position: relative;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .hero-content p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+        }
+
+        .cta-button {
+            background: #fff;
+            color: #E6A519;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            margin: 0.5rem;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Stats Section */
+        .stats {
+            background: #f8fafc;
+            padding: 4rem 5%;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1.5rem;
+        }
+
+        .stat-item h3 {
+            font-size: 2.5rem;
+            color: #E6A519;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-item p {
+            font-size: 1.1rem;
+            color: #6b7280;
+            font-weight: 500;
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+        }
+
+        /* Properties Section */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .property-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .property-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+        }
+
+        .property-image {
+            height: 200px;
+            background: linear-gradient(45deg, #E6A519 0%, #B8860B 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        .property-content {
+            padding: 1.5rem;
+        }
+
+        .property-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #E6A519;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .property-location {
+            color: #6b7280;
+            margin-bottom: 1rem;
+        }
+
+        .property-features {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .property-feature {
+            display: flex;
+            align-items: center;
+            gap: 0.25rem;
+            font-size: 0.9rem;
+            color: #6b7280;
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .about-text p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+
+        .about-image {
+            background: linear-gradient(135deg, #E6A519 0%, #B8860B 100%);
+            height: 300px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: white;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+
+        .service-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #1f2937;
+        }
+
+        /* Contact Section */
+        .contact {
+            background: #1f2937;
+            color: white;
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.75rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            width: 40px;
+            height: 40px;
+            background: #E6A519;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1rem;
+        }
+
+        .contact-form {
+            display: grid;
+            gap: 1rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-label {
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-input, .form-textarea {
+            padding: 0.75rem;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            background: #374151;
+            color: white;
+            font-size: 1rem;
+        }
+
+        .form-input:focus, .form-textarea:focus {
+            outline: none;
+            border-color: #E6A519;
+            box-shadow: 0 0 0 3px rgba(230, 165, 25, 0.1);
+        }
+
+        .form-input.error, .form-textarea.error {
+            border-color: #ef4444;
+            background-color: rgba(239, 68, 68, 0.1);
+        }
+
+        .form-input.success, .form-textarea.success {
+            border-color: #10b981;
+            background-color: rgba(16, 185, 129, 0.1);
+        }
+
+        .error-message {
+            color: #ef4444;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .error-message .bx {
+            color: #ef4444;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .success-message {
+            color: #10b981;
+            font-size: 0.875rem;
+            margin-top: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+        }
+
+        .success-message .bx {
+            color: #10b981;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        .form-textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: #E6A519;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #B8860B;
+        }
+
+        .submit-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Footer */
+        .footer {
+            background: #111827;
+            color: white;
+            text-align: center;
+            padding: 2rem 5%;
+        }
+
+        /* Floating Contact Button */
+        .floating-contact {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background: #E6A519;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 1rem 1.5rem;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(230, 165, 25, 0.4);
+            z-index: 999;
+            transition: all 0.3s ease;
+        }
+
+        .floating-contact:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 25px rgba(230, 165, 25, 0.6);
+        }
+
+        /* Floating Social Media Widget */
+        .floating-social {
+            position: fixed;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 999;
+        }
+
+        .floating-social-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+
+        .floating-social-button:hover {
+            transform: scale(1.1) translateY(-2px);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .floating-social-button.facebook {
+            background: linear-gradient(135deg, #1877f2, #42a5f5);
+            color: white;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .floating-social-button.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            border-radius: 20%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Enhanced Boxicons visibility in floating buttons */
+        .floating-social-button .bx {
+            font-size: 1.5rem;
+            color: white !important;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3) !important;
+        }
+
+        /* Mobile Navigation Menu */
+        .mobile-menu-button {
+            display: none;
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 1.2rem;
+            color: #1f2937;
+            cursor: pointer;
+            padding: 0.5rem;
+            width: 40px;
+            height: 40px;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-menu-button:hover {
+            background: #E6A519;
+            color: white;
+            border-color: #E6A519;
+        }
+
+        .mobile-nav-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 2000;
+            display: block;
+            backdrop-filter: blur(2px);
+        }
+
+        .mobile-nav-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: #ffffff;
+            z-index: 2001;
+            transition: right 0.3s ease;
+            padding: 2rem 1.5rem;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.3);
+            border-left: 1px solid #e5e7eb;
+        }
+
+        .mobile-nav-menu.open {
+            right: 0;
+        }
+
+        .mobile-nav-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid #e5e7eb;
+            background: rgba(230, 165, 25, 0.03);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: -1rem -0.5rem 2rem -0.5rem;
+        }
+
+        .mobile-nav-header .logo {
+            color: #E6A519;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .mobile-nav-close {
+            background: #f3f4f6;
+            border: 1px solid #d1d5db;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: #6b7280;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .mobile-nav-close:hover {
+            background: #ef4444;
+            color: white;
+            border-color: #ef4444;
+        }
+
+        .mobile-nav-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .mobile-nav-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .mobile-nav-links a {
+            display: flex;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            color: #1f2937;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1rem;
+            border-bottom: 1px solid #e5e7eb;
+            border-radius: 6px;
+            margin-bottom: 0.5rem;
+            transition: all 0.3s ease;
+            background: rgba(230, 165, 25, 0.02);
+        }
+
+        .mobile-nav-links a:hover {
+            color: #E6A519;
+            background: rgba(230, 165, 25, 0.1);
+            transform: translateX(5px);
+        }
+
+        /* Professional Icon Styling */
+        .contact-icon {
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        /* Enhanced Social Media Icons */
+        a[href*="facebook"] {
+            transition: all 0.3s ease;
+        }
+
+        a[href*="instagram"] {
+            transition: all 0.3s ease;
+        }
+
+        /* Social Media Icon Hover Effects */
+        .floating-social-button:hover,
+        a[href*="facebook"]:hover,
+        a[href*="instagram"]:hover,
+        a[href*="twitter"]:hover {
+            opacity: 0.8;
+            transform: scale(1.1);
+        }
+
+
+        /* Special styling for Facebook circled-f */
+        a[href*="facebook"]:hover {
+            color: #1877f2 !important;
+        }
+
+        /* Special styling for Instagram - Official brand colors */
+        a[href*="instagram"]:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(240, 148, 51, 0.4);
+        }
+
+        /* Custom Instagram icon styling - Professional look similar to Flaticon */
+        .instagram-icon {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            border-radius: 20%;
+            color: white;
+            font-weight: bold;
+            text-shadow: 0 1px 2px rgba(0,0,0,0.3);
+            transition: all 0.3s ease;
+        }
+
+        /* Professional icon containers */
+        .social-icon-container {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .social-icon-container:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        /* Boxicons Professional Styling */
+        .bx {
+            font-size: inherit;
+            vertical-align: middle;
+            transition: all 0.3s ease;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Enhanced Boxicons hover effects */
+        .contact-icon .bx {
+            font-size: 1.3em;
+            color: white !important;
+            font-weight: bold;
+        }
+
+        .mobile-nav-links .bx {
+            margin-right: 0.8rem;
+            color: #E6A519;
+            font-size: 1.1rem;
+            font-weight: bold;
+            min-width: 1.2em;
+            text-align: center;
+        }
+
+        /* Social media Boxicons brand colors - Enhanced visibility */
+        .bxl-facebook {
+            color: #1877f2 !important;
+            font-weight: bold;
+        }
+
+        .bxl-instagram {
+            color: #e4405f !important;
+            font-weight: bold;
+        }
+
+        .bxl-twitter {
+            color: #1da1f2 !important;
+            font-weight: bold;
+        }
+
+        /* Contact section social media icons - Better visibility */
+        .contact-icon .bxl-facebook,
+        .contact-icon .bxl-instagram,
+        .contact-icon .bxl-twitter {
+            font-size: 1.3em;
+            color: white !important;
+            text-shadow: none !important;
+        }
+
+        /* Footer social icons - Enhanced styling */
+        .footer-social-icon {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            width: 40px !important;
+            height: 40px !important;
+            border-radius: 8px !important;
+            transition: all 0.3s ease !important;
+            font-size: 1.2rem !important;
+        }
+
+        .footer-social-icon .bx {
+            color: white !important;
+            font-weight: bold !important;
+            text-shadow: none !important;
+        }
+
+        .footer-social-icon:hover {
+            transform: translateY(-2px) !important;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2) !important;
+        }
+
+        /* Professional animation for all Boxicons */
+        .bx:hover {
+            transform: scale(1.1);
+        }
+
+        /* Fix for Boxicon alignment and spacing */
+        .mobile-nav-links a .bx {
+            margin-right: 0.8rem;
+            min-width: 1.2em;
+            text-align: center;
+            color: #E6A519 !important;
+            font-weight: bold !important;
+        }
+
+        /* Ensure consistent icon sizing */
+        .contact-item .bx {
+            min-width: 1.5em;
+            text-align: center;
+        }
+
+        /* Footer contact icons */
+        footer .bx {
+            color: #60a5fa;
+            font-size: 1.1rem;
+            min-width: 1.2em;
+        }
+
+        /* Admin panel icons */
+        .admin-panel .bx {
+            color: #E6A519;
+            font-size: 1rem;
+            margin-right: 0.3rem;
+        }
+
+        /* Location highlights check icons */
+        .bx-check-circle {
+            color: #10b981 !important;
+            font-weight: bold;
+        }
+
+        /* Target icon in location section */
+        .bx-target-lock {
+            color: #E6A519 !important;
+        }
+
+        /* Fix for contact section text links */
+        .contact-item a {
+            text-shadow: none !important;
+            filter: none !important;
+        }
+
+        /* Ensure clear, sharp icons */
+        .contact-icon .bx,
+        .footer-social-icon .bx,
+        .floating-social-button .bx,
+        .mobile-nav-links .bx {
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Mobile navigation enhanced visibility */
+        .mobile-nav-menu * {
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        /* Ensure mobile menu is above everything */
+        .mobile-nav-overlay,
+        .mobile-nav-menu {
+            z-index: 9999 !important;
+        }
+
+        .mobile-nav-menu.open {
+            right: 0 !important;
+        }
+
+        /* Icon spacing improvements */
+        span[style*="font-size: 1.5rem"] {
+            transition: all 0.3s ease;
+        }
+
+        /* Admin Panel */
+        .admin-toggle {
+            position: fixed;
+            top: 100px;
+            right: 2rem;
+            background: #dc2626;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            padding: 0.5rem 1rem;
+            font-size: 0.8rem;
+            font-weight: 600;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .admin-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 1002;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .admin-panel {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 800px;
+            max-height: 90vh;
+            overflow: auto;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.25);
+        }
+
+        .admin-header {
+            background: #1f2937;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 12px 12px 0 0;
+        }
+
+        .admin-button {
+            background: #E6A519;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            margin: 0.5rem;
+        }
+
+        /* Social Media Buttons */
+        .social-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+        }
+
+        .social-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-button.facebook {
+            background: linear-gradient(135deg, #1877f2, #42a5f5);
+            color: white;
+        }
+
+        .social-button.instagram {
+            background: linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%);
+            color: white;
+        }
+
+        .social-button.facebook:hover {
+            background: linear-gradient(135deg, #E6A519, #B8860B);
+        }
+
+        .social-button.instagram:hover {
+            background: linear-gradient(45deg, #e0842e 0%,#d85e37 25%,#c7233e 50%,#b71e61 75%,#a7157d 100%);
+        }
+
+        /* Enhanced Boxicons in social buttons */
+        .social-button .bx {
+            font-size: 1.1rem;
+            color: white !important;
+        }
+
+        /* Comprehensive Responsive Design */
+        
+                 /* Mobile Phones - Portrait (320px - 480px) */
+        @media (max-width: 480px) {
+            /* Top Info Bar */
+            .nav {
+                padding: 0.8rem 3%;
+                flex-direction: row;
+                justify-content: space-between;
+                gap: 1rem;
+            }
+            
+            .logo {
+                font-size: 1.3rem;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: flex;
+            }
+
+            /* Hero Section */
+            .hero {
+                padding: 0 3%;
+                height: auto;
+                min-height: 100vh;
+                background-attachment: scroll; /* Better performance on mobile */
+            }
+            
+            .hero-content h1 {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+            
+            .hero-content p {
+                font-size: 1rem;
+                margin-bottom: 1.5rem;
+            }
+
+            /* Stats grid in hero */
+            .hero-content > div[style*="grid"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 0.8rem !important;
+                padding: 1rem !important;
+                font-size: 0.8rem !important;
+            }
+
+            /* Sections */
+            .section {
+                padding: 2rem 3%;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                margin-bottom: 2rem;
+            }
+
+            /* Buttons */
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+                margin: 0.3rem;
+            }
+
+            /* All grids to single column */
+            .stats-grid,
+            .contact-content,
+            .about-content,
+            .services-grid {
+                grid-template-columns: 1fr !important;
+                gap: 1rem !important;
+            }
+
+            /* Contact Form */
+            .form-input,
+            .form-textarea {
+                font-size: 16px; /* Prevents zoom on iOS */
+            }
+
+            /* Floating elements */
+            .floating-contact {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.7rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .floating-social {
+                bottom: 1rem;
+                left: 1rem;
+            }
+
+            .floating-social-button {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+
+            /* Admin button */
+            .admin-toggle {
+                top: 80px;
+                right: 1rem;
+                font-size: 0.7rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            /* Map iframe */
+            iframe[src*="google.com/maps"] {
+                height: 250px !important;
+            }
+        }
+
+        /* Mobile Phones - Landscape & Small Tablets (481px - 768px) */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .nav {
+                padding: 1rem 4%;
+                justify-content: space-between;
+            }
+            
+            .nav-menu {
+                display: none;
+            }
+
+            .mobile-menu-button {
+                display: flex;
+            }
+
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.1rem;
+            }
+
+            /* Stats grid in hero */
+            .hero-content > div[style*="grid"] {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 1rem !important;
+            }
+
+            .section {
+                padding: 3rem 4%;
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            /* Two column layouts for some grids */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+            
+            .contact-content,
+            .about-content {
+                grid-template-columns: 1fr !important;
+            }
+
+            .floating-contact {
+                bottom: 1rem;
+                right: 1rem;
+                padding: 0.8rem 1.2rem;
+                font-size: 0.9rem;
+            }
+
+            .floating-social {
+                bottom: 1rem;
+                left: 1rem;
+            }
+
+            .floating-social-button {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            /* Map iframe */
+            iframe[src*="google.com/maps"] {
+                height: 300px !important;
+            }
+        }
+
+        /* Tablets (769px - 1024px) */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .nav {
+                padding: 1rem 4%;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+
+            .hero-content h1 {
+                font-size: 3rem;
+            }
+
+            .section {
+                padding: 4rem 4%;
+            }
+
+            /* Three column layouts where appropriate */
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+            }
+
+            /* Map iframe */
+            iframe[src*="google.com/maps"] {
+                height: 350px !important;
+            }
+        }
+
+        /* Desktop (1025px - 1200px) */
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .section {
+                padding: 5rem 4%;
+            }
+            
+            .nav {
+                padding: 1rem 4%;
+            }
+
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+        }
+
+        /* Large Screens (1201px+) */
+        @media (min-width: 1201px) {
+            .section {
+                padding: 6rem 5%;
+                max-width: 1400px;
+            }
+            
+            .nav-menu {
+                display: flex;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+            
+            .hero-content h1 {
+                font-size: 4rem;
+            }
+            
+            .hero-content p {
+                font-size: 1.4rem;
+            }
+            
+            .section-title {
+                font-size: 3rem;
+            }
+        }
+
+        /* Universal Mobile Optimizations */
+        @media (max-width: 768px) {
+            /* Prevent horizontal scroll */
+            html, body {
+                overflow-x: hidden;
+            }
+            
+            /* Better touch targets */
+            button, .cta-button, .nav-link {
+                min-height: 44px;
+                min-width: 44px;
+            }
+            
+            /* Improved readability */
+            body {
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            
+            /* Spacing adjustments */
+            * {
+                margin: 0;
+                padding: 0;
+            }
+            
+            /* Form improvements */
+            .form-input, .form-textarea, .submit-button {
+                width: 100%;
+                box-sizing: border-box;
+            }
+            
+            /* Modal/overlay adjustments */
+            .admin-overlay {
+                padding: 1rem;
+            }
+            
+            .admin-panel {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                border-radius: 8px;
+                max-height: 90vh;
+            }
+
+            /* Top info bar responsive */
+            div[style*="background: '#1f2937'"] {
+                flex-direction: column;
+                gap: 0.5rem;
+                text-align: center;
+            }
+        }
+
+        /* High-DPI Displays */
+        @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            /* Sharper text rendering */
+            * {
+                -webkit-font-smoothing: antialiased;
+                -moz-osx-font-smoothing: grayscale;
+            }
+        }
+
+        /* Landscape orientation specific */
+        @media (max-height: 500px) and (orientation: landscape) {
+            .hero {
+                height: auto;
+                min-height: 500px;
+                padding: 2rem 5%;
+            }
+            
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 3rem 5%;
+            }
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+
+    <script type="text/babel">
+        // Complete Database Class
+        class ContactDatabase {
+            constructor() {
+                this.storageKey = 'contactSubmissions';
+            }
+
+            getAll() {
+                try {
+                    const stored = localStorage.getItem(this.storageKey);
+                    return stored ? JSON.parse(stored) : [];
+                } catch (error) {
+                    console.error('Error reading from localStorage:', error);
+                    return [];
+                }
+            }
+
+            save(formData) {
+                try {
+                    const submissions = this.getAll();
+                    const newSubmission = {
+                        id: Date.now(),
+                        timestamp: new Date().toLocaleString(),
+                        ...formData,
+                        status: 'New'
+                    };
+
+                    submissions.push(newSubmission);
+                    localStorage.setItem(this.storageKey, JSON.stringify(submissions));
+                    
+                    console.log('✅ New submission saved:', newSubmission.id);
+                    return newSubmission;
+                } catch (error) {
+                    console.error('Error saving submission:', error);
+                    throw new Error('Failed to save submission');
+                }
+            }
+
+            updateStatus(id, status) {
+                try {
+                    const submissions = this.getAll();
+                    const updatedSubmissions = submissions.map(sub => 
+                        sub.id === id ? { ...sub, status } : sub
+                    );
+                    
+                    localStorage.setItem(this.storageKey, JSON.stringify(updatedSubmissions));
+                    return updatedSubmissions;
+                } catch (error) {
+                    console.error('Error updating submission:', error);
+                    throw new Error('Failed to update submission');
+                }
+            }
+
+            delete(id) {
+                try {
+                    const submissions = this.getAll();
+                    const updatedSubmissions = submissions.filter(sub => sub.id !== id);
+                    
+                    localStorage.setItem(this.storageKey, JSON.stringify(updatedSubmissions));
+                    return updatedSubmissions;
+                } catch (error) {
+                    console.error('Error deleting submission:', error);
+                    throw new Error('Failed to delete submission');
+                }
+            }
+
+            exportToCSV() {
+                try {
+                    const submissions = this.getAll();
+                    
+                    if (submissions.length === 0) {
+                        throw new Error('No submissions to export');
+                    }
+
+                    const headers = ['ID', 'Date & Time', 'Name', 'Email', 'Phone', 'Message', 'Status'];
+                    const csvRows = [
+                        headers.join(','),
+                        ...submissions.map(sub => [
+                            sub.id,
+                            `"${sub.timestamp}"`,
+                            `"${sub.name}"`,
+                            `"${sub.email}"`,
+                            `"${sub.phone}"`,
+                            `"${sub.message.replace(/"/g, '""')}"`,
+                            sub.status
+                        ].join(','))
+                    ];
+
+                    const csvContent = csvRows.join('\n');
+                    const fileName = `contact_submissions_${new Date().toISOString().split('T')[0]}.csv`;
+                    
+                    const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+                    const link = document.createElement('a');
+                    const url = URL.createObjectURL(blob);
+                    
+                    link.setAttribute('href', url);
+                    link.setAttribute('download', fileName);
+                    link.style.visibility = 'hidden';
+                    
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    return fileName;
+                } catch (error) {
+                    console.error('Error exporting data:', error);
+                    throw error;
+                }
+            }
+        }
+
+        // Initialize database
+        const contactDB = new ContactDatabase();
+
+        // Complete React Component
+        function RealEstateWebsite() {
+            const [contactForm, setContactForm] = React.useState({
+                name: '',
+                email: '',
+                phone: '',
+                message: ''
+            });
+            const [formErrors, setFormErrors] = React.useState({});
+            const [isSubmitting, setIsSubmitting] = React.useState(false);
+            const [showAdmin, setShowAdmin] = React.useState(false);
+            const [adminVisible, setAdminVisible] = React.useState(false);
+            const [submissions, setSubmissions] = React.useState([]);
+            const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false);
+
+            // Property data
+            const properties = [
+                {
+                    id: 1,
+                    price: '$750,000',
+                    title: 'Modern Family Home',
+                    location: 'Downtown District',
+                    beds: 4,
+                    baths: 3,
+                    sqft: 2500
+                },
+                {
+                    id: 2,
+                    price: '$525,000',
+                    title: 'Cozy Suburban House',
+                    location: 'Green Valley',
+                    beds: 3,
+                    baths: 2,
+                    sqft: 1800
+                },
+                {
+                    id: 3,
+                    price: '$950,000',
+                    title: 'Luxury Penthouse',
+                    location: 'City Center',
+                    beds: 3,
+                    baths: 3,
+                    sqft: 2200
+                }
+            ];
+
+            // Services data
+            const services = [
+                {
+                    icon: '🏠',
+                    title: 'Property Sales',
+                    description: 'Expert guidance through the entire home buying and selling process with market insights and negotiation expertise.'
+                },
+                {
+                    icon: '💰',
+                    title: 'Property Valuation',
+                    description: 'Accurate property assessments using current market data and comprehensive analysis for informed decisions.'
+                },
+                {
+                    icon: '🔍',
+                    title: 'Property Search',
+                    description: 'Personalized property search services to find your perfect home based on your specific needs and budget.'
+                },
+                {
+                    icon: '📋',
+                    title: 'Property Management',
+                    description: 'Complete property management solutions including tenant screening, maintenance, and rental collection.'
+                }
+            ];
+
+            // Load submissions
+            React.useEffect(() => {
+                setSubmissions(contactDB.getAll());
+                console.log('🔧 Admin Access: Press Ctrl+Shift+A, password: admin123');
+            }, []);
+
+            // Admin access
+            React.useEffect(() => {
+                const handleKeyDown = (e) => {
+                    if (e.ctrlKey && e.shiftKey && e.key === 'A') {
+                        if (!adminVisible) {
+                            const password = prompt('Enter admin password:');
+                            if (password === 'admin123') {
+                                setAdminVisible(true);
+                                alert('Admin access granted!');
+                            }
+                        }
+                    }
+                    if (e.ctrlKey && e.shiftKey && e.key === 'H') {
+                        setAdminVisible(false);
+                        setShowAdmin(false);
+                        console.log('🔧 Admin panel hidden');
+                    }
+                };
+
+                document.addEventListener('keydown', handleKeyDown);
+                return () => document.removeEventListener('keydown', handleKeyDown);
+            }, [adminVisible]);
+
+            // Validation functions
+            const validateEmail = (email) => {
+                return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+            };
+
+            const validatePhone = (phone) => {
+                return /^[\+]?[1-9][\d]{0,15}$/.test(phone.replace(/[\s\-\(\)]/g, ''));
+            };
+
+            const validateName = (name) => {
+                return name.trim().length >= 2 && /^[a-zA-Z\s]+$/.test(name.trim());
+            };
+
+            const validateMessage = (message) => {
+                const trimmed = message.trim();
+                if (trimmed.length < 10) return 'Message must be at least 10 characters';
+                if (trimmed.length > 500) return 'Message must be less than 500 characters';
+                
+                const spamPatterns = ['click here', 'buy now', 'free money', 'guarantee'];
+                if (spamPatterns.some(pattern => trimmed.toLowerCase().includes(pattern))) {
+                    return 'Message contains suspicious content';
+                }
+                
+                return '';
+            };
+
+            const validateField = (name, value) => {
+                switch (name) {
+                    case 'name':
+                        if (!value.trim()) return 'Name is required';
+                        if (!validateName(value)) return 'Please enter a valid name (letters only)';
+                        return '';
+                    case 'email':
+                        if (!value.trim()) return 'Email is required';
+                        if (!validateEmail(value)) return 'Please enter a valid email address';
+                        return '';
+                    case 'phone':
+                        if (!value.trim()) return 'Phone number is required';
+                        if (!validatePhone(value)) return 'Please enter a valid phone number';
+                        return '';
+                    case 'message':
+                        if (!value.trim()) return 'Message is required';
+                        return validateMessage(value);
+                    default:
+                        return '';
+                }
+            };
+
+            const validateForm = () => {
+                const errors = {};
+                Object.keys(contactForm).forEach(key => {
+                    const error = validateField(key, contactForm[key]);
+                    if (error) errors[key] = error;
+                });
+                
+                setFormErrors(errors);
+                return Object.keys(errors).length === 0;
+            };
+
+            // Form submission
+            const handleSubmit = async (e) => {
+                e.preventDefault();
+                
+                if (!validateForm()) return;
+                
+                setIsSubmitting(true);
+                
+                try {
+                    await new Promise(resolve => setTimeout(resolve, 1000));
+                    const submission = contactDB.save(contactForm);
+                    alert(`Thank you ${contactForm.name}! We'll get back to you soon.\nSubmission ID: ${submission.id}`);
+                    setContactForm({ name: '', email: '', phone: '', message: '' });
+                    setFormErrors({});
+                    setSubmissions(contactDB.getAll());
+                } catch (error) {
+                    alert('Error submitting form. Please try again.');
+                } finally {
+                    setIsSubmitting(false);
+                }
+            };
+
+            const handleChange = (e) => {
+                const { name, value } = e.target;
+                setContactForm(prev => ({ ...prev, [name]: value }));
+                
+                if (formErrors[name]) {
+                    setFormErrors(prev => ({ ...prev, [name]: '' }));
+                }
+                
+                if (value.trim() !== '') {
+                    const error = validateField(name, value);
+                    if (error !== formErrors[name]) {
+                        setFormErrors(prev => ({ ...prev, [name]: error }));
+                    }
+                }
+            };
+
+            const handleBlur = (e) => {
+                const { name, value } = e.target;
+                const error = validateField(name, value);
+                setFormErrors(prev => ({ ...prev, [name]: error }));
+            };
+
+            const scrollToSection = (id) => {
+                document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' });
+                setMobileMenuOpen(false); // Close mobile menu after navigation
+            };
+
+            const toggleMobileMenu = () => {
+                setMobileMenuOpen(!mobileMenuOpen);
+            };
+
+            const closeMobileMenu = () => {
+                setMobileMenuOpen(false);
+            };
+
+            // Close mobile menu on escape key
+            React.useEffect(() => {
+                const handleEscape = (e) => {
+                    if (e.key === 'Escape') {
+                        setMobileMenuOpen(false);
+                    }
+                };
+                
+                if (mobileMenuOpen) {
+                    document.addEventListener('keydown', handleEscape);
+                    document.body.style.overflow = 'hidden'; // Prevent background scroll
+                } else {
+                    document.body.style.overflow = 'unset';
+                }
+                
+                return () => {
+                    document.removeEventListener('keydown', handleEscape);
+                    document.body.style.overflow = 'unset';
+                };
+            }, [mobileMenuOpen]);
+
+            return (
+                <div>
+                    {/* Top Info Bar */}
+                    <div style={{
+                        background: '#1f2937',
+                        color: 'white',
+                        padding: '0.5rem 5%',
+                        fontSize: '0.9rem',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        flexWrap: 'wrap',
+                        gap: '2rem'
+                    }}>
+                        <span><i class='bx bx-phone'></i> +1 (555) 123-4567</span>
+                        <span><i class='bx bx-phone'></i> +1 (555) 987-6543</span>
+                    </div>
+
+                    {/* Header */}
+                    <header className="header">
+                        <nav className="nav">
+                            <div className="logo">SwarnaBhoomi</div>
+                            <ul className="nav-menu">
+                                <li><a href="#home" className="nav-link" onClick={() => scrollToSection('home')}>Home</a></li>
+                                <li><a href="#projects" className="nav-link" onClick={() => scrollToSection('projects')}>Projects</a></li>
+                                <li><a href="#about" className="nav-link" onClick={() => scrollToSection('about')}>About Us</a></li>
+                                <li><a href="#amenities" className="nav-link" onClick={() => scrollToSection('amenities')}>Amenities</a></li>
+                                <li><a href="#location" className="nav-link" onClick={() => scrollToSection('location')}>Location</a></li>
+                                <li><a href="#contact" className="nav-link" onClick={() => scrollToSection('contact')}>Contact</a></li>
+                            </ul>
+                            <button 
+                                className="mobile-menu-button"
+                                onClick={() => setMobileMenuOpen(true)}
+                                aria-label="Open Menu"
+                            >
+                                <i class='bx bx-menu'></i>
+                            </button>
+                        </nav>
+
+                        {/* Mobile Navigation Overlay */}
+                        {mobileMenuOpen && (
+                            <div className="mobile-nav-overlay" onClick={() => setMobileMenuOpen(false)}>
+                                <div className={`mobile-nav-menu ${mobileMenuOpen ? 'open' : ''}`} onClick={(e) => e.stopPropagation()}>
+                                    <div className="mobile-nav-header">
+                                        <div className="logo">SwarnaBhoomi</div>
+                                        <button 
+                                            className="mobile-nav-close"
+                                            onClick={() => setMobileMenuOpen(false)}
+                                            aria-label="Close Menu"
+                                        >
+                                            <i class='bx bx-x'></i>
+                                        </button>
+                                    </div>
+                                    <ul className="mobile-nav-links">
+                                        <li>
+                                            <a href="#home" onClick={() => {
+                                                scrollToSection('home');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bxs-home'></i> Home</a>
+                                        </li>
+                                        <li>
+                                            <a href="#projects" onClick={() => {
+                                                scrollToSection('projects');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bx-buildings'></i> Projects</a>
+                                        </li>
+                                        <li>
+                                            <a href="#about" onClick={() => {
+                                                scrollToSection('about');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bx-info-circle'></i> About Us</a>
+                                        </li>
+                                        <li>
+                                            <a href="#amenities" onClick={() => {
+                                                scrollToSection('amenities');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bx-star'></i> Amenities</a>
+                                        </li>
+                                        <li>
+                                            <a href="#location" onClick={() => {
+                                                scrollToSection('location');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bx-map'></i> Location</a>
+                                        </li>
+                                        <li>
+                                            <a href="#contact" onClick={() => {
+                                                scrollToSection('contact');
+                                                setMobileMenuOpen(false);
+                                            }}><i class='bx bx-phone'></i> Contact</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        )}
+                    </header>
+
+                    {/* Hero Section */}
+                    <section id="home" className="hero">
+                        <div className="hero-content">
+                            <h1>Premium Villa Plots in Prime Location</h1>
+                            <p>Discover your perfect plot in our gated community. Sprawling over 45 acres with world-class amenities and unmatched connectivity to major hubs.</p>
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(120px, 1fr))', 
+                                gap: '1rem',
+                                margin: '2rem 0',
+                                background: 'rgba(255,255,255,0.1)',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                backdropFilter: 'blur(10px)'
+                            }}>
+                                <div style={{textAlign: 'center'}}>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>45</div>
+                                    <div style={{fontSize: '0.9rem'}}>Acres</div>
+                                </div>
+                                <div style={{textAlign: 'center'}}>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>420</div>
+                                    <div style={{fontSize: '0.9rem'}}>Plots</div>
+                                </div>
+                                <div style={{textAlign: 'center'}}>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>1200-6000</div>
+                                    <div style={{fontSize: '0.9rem'}}>SQFT Range</div>
+                                </div>
+                                <div style={{textAlign: 'center'}}>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>$18.99</div>
+                                    <div style={{fontSize: '0.9rem'}}>Onwards*</div>
+                                </div>
+                            </div>
+                            <div style={{display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap'}}>
+                                <a href="#projects" className="cta-button" onClick={() => scrollToSection('projects')}>
+                                    View Project Details
+                                </a>
+                                <a href="#contact" className="cta-button" onClick={() => scrollToSection('contact')} 
+                                   style={{background: 'transparent', border: '2px solid white', color: 'white'}}>
+                                    Book Site Visit
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Stats Section */}
+                    <section className="stats">
+                        <div className="stats-grid">
+                            <div className="stat-item">
+                                <h3>500+</h3>
+                                <p>Properties Sold</p>
+                            </div>
+                            <div className="stat-item">
+                                <h3>15+</h3>
+                                <p>Years Experience</p>
+                            </div>
+                            <div className="stat-item">
+                                <h3>1000+</h3>
+                                <p>Happy Clients</p>
+                            </div>
+                            <div className="stat-item">
+                                <h3>95%</h3>
+                                <p>Client Satisfaction</p>
+                            </div>
+                        </div>
+                        <div style={{textAlign: 'center', marginTop: '2rem'}}>
+                            <p style={{marginBottom: '1rem', color: '#6b7280'}}>Ready to become our next success story?</p>
+                            <a href="#contact" className="cta-button" onClick={() => scrollToSection('contact')} 
+                               style={{background: '#E6A519', color: 'white'}}>
+                                Get Started Today
+                            </a>
+                        </div>
+                    </section>
+
+                    {/* Project Details Section */}
+                    <section id="projects" className="section">
+                        <h2 className="section-title">Project Overview</h2>
+                        <p className="section-subtitle">Welcome to the picturesque location you have only dreamt of</p>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '2rem',
+                            marginBottom: '3rem'
+                        }}>
+                                                    <div style={{
+                            background: 'linear-gradient(135deg, #E6A519 0%, #B8860B 100%)',
+                            color: 'white',
+                            padding: '2rem',
+                            borderRadius: '12px',
+                            textAlign: 'center'
+                        }}>
+                                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🏞️</div>
+                                <h3>Located in Prime Area</h3>
+                                <p>Premium location with excellent connectivity</p>
+                            </div>
+                            <div style={{
+                                background: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)',
+                                color: 'white',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>📝</div>
+                                <h3>Ready for Registration</h3>
+                                <p>Villa plots ready for immediate registration</p>
+                            </div>
+                            <div style={{
+                                background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                                color: 'white',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                textAlign: 'center'
+                            }}>
+                                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>📏</div>
+                                <h3>Flexible Plot Sizes</h3>
+                                <p>Plot sizes that fit your needs and budget</p>
+                            </div>
+                        </div>
+
+                        <h3 style={{textAlign: 'center', fontSize: '2rem', marginBottom: '2rem', color: '#1f2937'}}>
+                            Project Configuration
+                        </h3>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                            gap: '1.5rem',
+                            marginBottom: '3rem'
+                        }}>
+                            {[
+                                {size: '30 x 50', sqft: '1500', price: '$18.99K'},
+                                {size: '30 x 60', sqft: '1800', price: '$22.50K'},
+                                {size: '40 x 60', sqft: '2400', price: '$29.99K'},
+                                {size: '50 x 80', sqft: '4000', price: '$49.99K'},
+                                {size: '40 x 80', sqft: '3200', price: '$39.99K'},
+                                {size: 'Custom', sqft: 'Variable', price: 'On Request'}
+                            ].map((config, index) => (
+                                <div key={index} style={{
+                                    background: 'white',
+                                    padding: '1.5rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 4px 20px rgba(0,0,0,0.1)',
+                                    textAlign: 'center',
+                                    border: '2px solid #f3f4f6',
+                                    transition: 'all 0.3s ease'
+                                }}>
+                                    <h4 style={{fontSize: '1.5rem', color: '#E6A519', marginBottom: '0.5rem'}}>
+                                        {config.size}
+                                    </h4>
+                                    <p style={{color: '#6b7280', marginBottom: '1rem'}}>
+                                        {config.sqft} SQFT
+                                    </p>
+                                    <div style={{
+                                        fontSize: '1.25rem',
+                                        fontWeight: 'bold',
+                                        color: '#10b981',
+                                        marginBottom: '1rem'
+                                    }}>
+                                        {config.price}
+                                    </div>
+                                    <button style={{
+                                        background: '#E6A519',
+                                        color: 'white',
+                                        border: 'none',
+                                        padding: '0.5rem 1rem',
+                                        borderRadius: '6px',
+                                        cursor: 'pointer',
+                                        width: '100%'
+                                    }}>
+                                        Check Price
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                        
+                        <div style={{textAlign: 'center', marginTop: '3rem'}}>
+                            <h3 style={{marginBottom: '1rem', color: '#1f2937'}}>Interested in Our Villa Plots?</h3>
+                            <p style={{marginBottom: '1.5rem', color: '#6b7280'}}>
+                                Contact us today to schedule a site visit and get detailed information about plot availability.
+                            </p>
+                            <a href="#contact" className="cta-button" onClick={() => scrollToSection('contact')} 
+                               style={{background: '#E6A519', color: 'white'}}>
+                                Book Site Visit Now
+                            </a>
+                        </div>
+                    </section>
+
+                    {/* About Section */}
+                    <section id="about" className="section">
+                        <h2 className="section-title">About SwarnaBhoomi</h2>
+                        <p className="section-subtitle">Your trusted partner in real estate for over 15 years</p>
+                        
+                        <div className="about-content">
+                            <div className="about-text">
+                                <p>
+                                    At SwarnaBhoomi, we've been dedicated to helping families and individuals find their perfect homes. 
+                                    We understand that buying or selling a property is one of life's most significant decisions.
+                                </p>
+                                <p>
+                                    Our team of expert real estate professionals is committed to providing personalized service, 
+                                    market expertise, and unwavering support throughout your real estate journey. We pride ourselves 
+                                    on our integrity, professionalism, and results-driven approach.
+                                </p>
+                                <p>
+                                    Whether you're a first-time buyer, seasoned investor, or looking to sell your current property, 
+                                    we have the knowledge and resources to guide you every step of the way.
+                                </p>
+                            </div>
+                            <div className="about-image">
+                                🏢 Our Team
+                            </div>
+                        </div>
+                        <div style={{textAlign: 'center', marginTop: '3rem'}}>
+                            <h3 style={{marginBottom: '1rem', color: '#1f2937'}}>Ready to work with trusted professionals?</h3>
+                            <p style={{marginBottom: '1.5rem', color: '#6b7280'}}>
+                                Let our experienced team guide you through your real estate journey with confidence.
+                            </p>
+                            <a href="#contact" className="cta-button" onClick={() => scrollToSection('contact')} 
+                               style={{background: '#E6A519', color: 'white'}}>
+                                Get Started - Contact Us
+                            </a>
+                        </div>
+                    </section>
+
+                    {/* Amenities Section */}
+                    <section id="amenities" className="section">
+                        <h2 className="section-title">World-Class Amenities</h2>
+                        <p className="section-subtitle">Experience luxury living with our premium facilities</p>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '2rem',
+                            marginBottom: '3rem'
+                        }}>
+                            {[
+                                {icon: '🏀', title: 'Basketball Court', desc: 'Professional basketball court for sports enthusiasts'},
+                                {icon: '🎾', title: 'Tennis Court', desc: 'Regulation size tennis court with professional lighting'},
+                                {icon: '🏃‍♂️', title: 'Jogging Track', desc: 'Dedicated jogging track for your fitness needs'},
+                                {icon: '🌸', title: 'Flower Park', desc: 'Beautiful landscaped gardens with exotic flowers'},
+                                {icon: '🏢', title: 'Club House', desc: 'Exclusive clubhouse with recreational facilities'},
+                                {icon: '🌲', title: 'Mini Forest', desc: 'Serene mini forest for nature lovers'},
+                                {icon: '👶', title: 'Children\'s Play Area', desc: 'Safe and fun play area for kids'},
+                                {icon: '🏊‍♂️', title: 'Swimming Pool', desc: 'Resort-style swimming pool with poolside amenities'},
+                                {icon: '🏋️‍♂️', title: 'Fitness Center', desc: 'Fully equipped gymnasium with modern equipment'},
+                                {icon: '🅿️', title: 'Parking', desc: 'Ample covered parking space for residents'},
+                                {icon: '🔒', title: '24/7 Security', desc: 'Round-the-clock security with CCTV surveillance'},
+                                {icon: '💡', title: 'Street Lighting', desc: 'LED street lighting throughout the community'}
+                            ].map((amenity, index) => (
+                                <div key={index} style={{
+                                    background: 'white',
+                                    padding: '2rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                    textAlign: 'center',
+                                    transition: 'transform 0.3s ease',
+                                    border: '2px solid #f3f4f6'
+                                }}>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>{amenity.icon}</div>
+                                    <h3 style={{fontSize: '1.25rem', marginBottom: '1rem', color: '#1f2937'}}>
+                                        {amenity.title}
+                                    </h3>
+                                    <p style={{color: '#6b7280', lineHeight: '1.6'}}>{amenity.desc}</p>
+                                </div>
+                            ))}
+                        </div>
+
+                        <div style={{
+                            background: 'linear-gradient(135deg, #E6A519 0%, #B8860B 100%)',
+                            padding: '3rem',
+                            borderRadius: '12px',
+                            color: 'white',
+                            textAlign: 'center'
+                        }}>
+                            <h3 style={{fontSize: '2rem', marginBottom: '1rem'}}>Premium Living Experience</h3>
+                            <p style={{fontSize: '1.1rem', marginBottom: '2rem', opacity: '0.9'}}>
+                                Enjoy resort-style amenities right at your doorstep. From recreational facilities to essential services, 
+                                everything you need for a comfortable lifestyle is here.
+                            </p>
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+                                gap: '1rem',
+                                marginBottom: '2rem'
+                            }}>
+                                <div>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>15+</div>
+                                    <div>Premium Amenities</div>
+                                </div>
+                                <div>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>45</div>
+                                    <div>Acres of Green Space</div>
+                                </div>
+                                <div>
+                                    <div style={{fontSize: '2rem', fontWeight: 'bold'}}>24/7</div>
+                                    <div>Security & Maintenance</div>
+                                </div>
+                            </div>
+                            <a href="#contact" className="cta-button" onClick={() => scrollToSection('contact')} 
+                               style={{background: 'white', color: '#E6A519'}}>
+                                Schedule Site Visit
+                            </a>
+                        </div>
+                    </section>
+
+                    {/* Location Highlights Section */}
+                    <section id="location" className="section">
+                        <h2 className="section-title">Location Highlights</h2>
+                        <p className="section-subtitle">Strategically located with excellent connectivity to key destinations</p>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+                            gap: '3rem',
+                            marginBottom: '3rem'
+                        }}>
+                            {/* Educational Institutions */}
+                            <div style={{
+                                background: 'white',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                            }}>
+                                <div style={{display: 'flex', alignItems: 'center', marginBottom: '1.5rem'}}>
+                                    <div style={{fontSize: '2.5rem', marginRight: '1rem'}}>🎓</div>
+                                    <h3 style={{fontSize: '1.5rem', color: '#1f2937'}}>Educational Institutions</h3>
+                                </div>
+                                <ul style={{listStyle: 'none', padding: 0}}>
+                                    {[
+                                        'International School of Excellence',
+                                        'Premier Academy',
+                                        'Global Public School',
+                                        'Green Valley High School',
+                                        'Sunrise International',
+                                        'Elite Learning Center',
+                                        'Cambridge School',
+                                        'Future Kids Academy'
+                                    ].map((school, index) => (
+                                        <li key={index} style={{
+                                            padding: '0.5rem 0',
+                                            borderBottom: '1px solid #f3f4f6',
+                                            color: '#6b7280'
+                                        }}>
+                                            📚 {school}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Hospitals */}
+                            <div style={{
+                                background: 'white',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                            }}>
+                                <div style={{display: 'flex', alignItems: 'center', marginBottom: '1.5rem'}}>
+                                    <div style={{fontSize: '2.5rem', marginRight: '1rem'}}>🏥</div>
+                                    <h3 style={{fontSize: '1.5rem', color: '#1f2937'}}>Healthcare</h3>
+                                </div>
+                                <ul style={{listStyle: 'none', padding: 0}}>
+                                    {[
+                                        'City General Hospital',
+                                        'Prime Multispecialty Hospital',
+                                        'Advanced Medical Center',
+                                        'Elite Super Specialty Hospital',
+                                        'Metro Healthcare',
+                                        'Quality Care Hospital',
+                                        'Regional Medical Institute'
+                                    ].map((hospital, index) => (
+                                        <li key={index} style={{
+                                            padding: '0.5rem 0',
+                                            borderBottom: '1px solid #f3f4f6',
+                                            color: '#6b7280'
+                                        }}>
+                                            🚑 {hospital}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Shopping & Entertainment */}
+                            <div style={{
+                                background: 'white',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)'
+                            }}>
+                                <div style={{display: 'flex', alignItems: 'center', marginBottom: '1.5rem'}}>
+                                    <div style={{fontSize: '2.5rem', marginRight: '1rem'}}>🛍️</div>
+                                    <h3 style={{fontSize: '1.5rem', color: '#1f2937'}}>Shopping & Leisure</h3>
+                                </div>
+                                <ul style={{listStyle: 'none', padding: 0}}>
+                                    {[
+                                        'Grand Mall',
+                                        'Metro Shopping Center',
+                                        'Entertainment Complex',
+                                        'Premium Hypermarket',
+                                        'Sports Club',
+                                        'Golf Course',
+                                        'Multiplex Cinema',
+                                        'Restaurants & Cafes'
+                                    ].map((place, index) => (
+                                        <li key={index} style={{
+                                            padding: '0.5rem 0',
+                                            borderBottom: '1px solid #f3f4f6',
+                                            color: '#6b7280'
+                                        }}>
+                                            🎯 {place}
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+                        </div>
+
+                        {/* Connectivity */}
+                        <div style={{
+                            background: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)',
+                            padding: '3rem',
+                            borderRadius: '12px',
+                            color: 'white',
+                            textAlign: 'center'
+                        }}>
+                            <h3 style={{fontSize: '2rem', marginBottom: '2rem'}}>Excellent Connectivity</h3>
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                                gap: '2rem'
+                            }}>
+                                <div>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🚗</div>
+                                    <h4>Major Highways</h4>
+                                    <p>Easy access to main city routes</p>
+                                </div>
+                                <div>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🚌</div>
+                                    <h4>Public Transport</h4>
+                                    <p>Well-connected bus routes</p>
+                                </div>
+                                <div>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>✈️</div>
+                                    <h4>Airport Proximity</h4>
+                                    <p>30 minutes to international airport</p>
+                                </div>
+                                <div>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🏢</div>
+                                    <h4>IT Hubs</h4>
+                                    <p>Close to major IT corridors</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        {/* Google Maps Section */}
+                        <div style={{marginTop: '4rem'}}>
+                            <h3 style={{
+                                textAlign: 'center', 
+                                fontSize: '2rem', 
+                                marginBottom: '1rem', 
+                                color: '#1f2937'
+                            }}>
+                                ⌖ Project Location - Bagalur
+                            </h3>
+                            <p style={{
+                                textAlign: 'center', 
+                                color: '#6b7280', 
+                                marginBottom: '2rem', 
+                                fontSize: '1.1rem'
+                            }}>
+                                Explore our prime location with excellent connectivity and accessibility
+                            </p>
+                            
+                            <div style={{
+                                background: 'white',
+                                padding: '1.5rem',
+                                borderRadius: '12px',
+                                boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                marginBottom: '2rem'
+                            }}>
+                                <iframe
+                                    src="https://www.google.com/maps/embed?pb=!1m52!1m12!1m3!1d248849.84916296526!2d77.49085073281247!3d12.953945614013004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m37!4e0!4m5!1s0x3bae13c09b2b1e7d%3A0x8b27e6a0e7dfa0e0!2sBagalur%2C%20Karnataka%2C%20India!3m2!1d12.9539456!2d77.5908507!4m5!1s0x3bae140461fbeb2d%3A0x47c68e55a8b88c87!2sKempegowda%20International%20Airport%20Bengaluru!3m2!1d13.1986!2d77.7066!4m5!1s0x3bae1670c9b44e6d%3A0xf8dfc3e8517e4fe0!2sWhitefield%2C%20Bengaluru%2C%20Karnataka!3m2!1d12.9698!2d77.7500!4m5!1s0x3bae1584e8e3be35%3A0x30f17c235b9ad1c7!2sElectronic%20City%2C%20Bengaluru%2C%20Karnataka!3m2!1d12.8456!2d77.6603!4m5!1s0x3bae15b4a6bb6851%3A0x8b27e6a0e7dfa0e0!2sSarjapur%2C%20Bengaluru%2C%20Karnataka!3m2!1d12.9082!2d77.6947!4m5!1s0x3bae161f7000000f%3A0x8b27e6a0e7dfa0e0!2sHosur%2C%20Tamil%20Nadu!3m2!1d12.7409!2d77.8253!5e0!3m2!1sen!2sus!4v1703234567890!5m2!1sen!2sus"
+                                    width="100%"
+                                    height="450"
+                                    style={{
+                                        border: 0,
+                                        borderRadius: '8px'
+                                    }}
+                                    allowFullScreen=""
+                                    loading="lazy"
+                                    referrerPolicy="no-referrer-when-downgrade"
+                                    title="SwarnaBhoomi Bagalur - Multiple Locations"
+                                ></iframe>
+                            </div>
+
+                            {/* Map Legend */}
+                            <div style={{
+                                background: '#f8fafc',
+                                padding: '2rem',
+                                borderRadius: '12px',
+                                marginBottom: '2rem'
+                            }}>
+                                <h4 style={{
+                                    textAlign: 'center',
+                                    fontSize: '1.5rem',
+                                    marginBottom: '2rem',
+                                    color: '#1f2937'
+                                }}>
+                                    ⌖ Pinned Locations on Map
+                                </h4>
+                                <div style={{
+                                    display: 'grid',
+                                    gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+                                    gap: '1.5rem'
+                                }}>
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#2563eb',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            1
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>🏘️ Bagalur (Project Location)</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>Main project site</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#10b981',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            2
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>✈️ Kempegowda Airport</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>35 km - International connectivity</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#f59e0b',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            3
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>🏢 Whitefield IT Hub</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>25 km - Major IT corridor</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#8b5cf6',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            4
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>💻 Electronic City</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>28 km - Tech hub</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#ef4444',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            5
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>🌆 Sarjapur</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>15 km - Residential hub</div>
+                                        </div>
+                                    </div>
+
+                                    <div style={{
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        gap: '1rem',
+                                        background: 'white',
+                                        padding: '1rem',
+                                        borderRadius: '8px',
+                                        boxShadow: '0 2px 10px rgba(0,0,0,0.1)'
+                                    }}>
+                                        <div style={{
+                                            width: '40px',
+                                            height: '40px',
+                                            background: '#06b6d4',
+                                            borderRadius: '50%',
+                                            display: 'flex',
+                                            alignItems: 'center',
+                                            justifyContent: 'center',
+                                            color: 'white',
+                                            fontWeight: 'bold'
+                                        }}>
+                                            6
+                                        </div>
+                                        <div>
+                                            <div style={{fontWeight: '600', color: '#1f2937'}}>🏭 Hosur</div>
+                                            <div style={{fontSize: '0.9rem', color: '#6b7280'}}>12 km - Industrial town</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                                gap: '2rem',
+                                marginBottom: '2rem'
+                            }}>
+                                <div style={{
+                                    background: 'white',
+                                    padding: '2rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                    textAlign: 'center'
+                                }}>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>⌖</div>
+                                    <h4 style={{fontSize: '1.25rem', marginBottom: '1rem', color: '#1f2937'}}>
+                                        Project Address
+                                    </h4>
+                                    <p style={{color: '#6b7280', lineHeight: '1.6'}}>
+                                        SwarnaBhoomi Villa Plots<br/>
+                                        Bagalur Main Road<br/>
+                                        Bagalur, Karnataka 562149<br/>
+                                        India
+                                    </p>
+                                </div>
+
+                                <div style={{
+                                    background: 'white',
+                                    padding: '2rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                    textAlign: 'center'
+                                }}>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>🚗</div>
+                                    <h4 style={{fontSize: '1.25rem', marginBottom: '1rem', color: '#1f2937'}}>
+                                        Distance from Key Locations
+                                    </h4>
+                                    <div style={{color: '#6b7280', lineHeight: '1.8', textAlign: 'left'}}>
+                                        <div style={{marginBottom: '0.5rem'}}>🏢 Whitefield IT Hub - 25 km</div>
+                                        <div style={{marginBottom: '0.5rem'}}>✈️ Kempegowda Airport - 35 km</div>
+                                        <div style={{marginBottom: '0.5rem'}}>🏙️ Bangalore City Center - 45 km</div>
+                                        <div style={{marginBottom: '0.5rem'}}>🚉 Baiyappanahalli Station - 30 km</div>
+                                    </div>
+                                </div>
+
+                                <div style={{
+                                    background: 'white',
+                                    padding: '2rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                    textAlign: 'center'
+                                }}>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}><i class='bx bx-target-lock' style={{color: '#E6A519'}}></i></div>
+                                    <h4 style={{fontSize: '1.25rem', marginBottom: '1rem', color: '#1f2937'}}>
+                                        Why Choose Bagalur?
+                                    </h4>
+                                    <div style={{color: '#6b7280', lineHeight: '1.8', textAlign: 'left'}}>
+                                                                        <div style={{marginBottom: '0.5rem'}}><i class='bx bx-check-circle' style={{color: '#10b981', marginRight: '0.5rem'}}></i> Rapid infrastructure development</div>
+                                <div style={{marginBottom: '0.5rem'}}><i class='bx bx-check-circle' style={{color: '#10b981', marginRight: '0.5rem'}}></i> Upcoming metro connectivity</div>
+                                <div style={{marginBottom: '0.5rem'}}><i class='bx bx-check-circle' style={{color: '#10b981', marginRight: '0.5rem'}}></i> Close to IT corridors</div>
+                                <div style={{marginBottom: '0.5rem'}}><i class='bx bx-check-circle' style={{color: '#10b981', marginRight: '0.5rem'}}></i> High investment potential</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div style={{
+                                background: 'linear-gradient(135deg, #E6A519 0%, #B8860B 100%)',
+                                padding: '2.5rem',
+                                borderRadius: '12px',
+                                color: 'white',
+                                textAlign: 'center'
+                            }}>
+                                <h3 style={{fontSize: '1.75rem', marginBottom: '1rem'}}>🗺️ Schedule a Site Visit</h3>
+                                <p style={{marginBottom: '2rem', fontSize: '1.1rem', opacity: '0.9'}}>
+                                    Experience the location advantage firsthand. Our team will guide you through the project 
+                                    and surrounding amenities.
+                                </p>
+                                <div style={{
+                                    display: 'flex',
+                                    gap: '1rem',
+                                    justifyContent: 'center',
+                                    flexWrap: 'wrap'
+                                }}>
+                                    <a href="#contact" 
+                                       className="cta-button" 
+                                       onClick={() => scrollToSection('contact')}
+                                       style={{background: 'white', color: '#E6A519'}}>
+                                        <i class='bx bx-phone'></i> Book Site Visit
+                                    </a>
+                                    <a href="https://www.google.com/maps/dir//Bagalur,+Karnataka,+India/" 
+                                       target="_blank" 
+                                       rel="noopener noreferrer"
+                                       className="cta-button" 
+                                       style={{background: 'transparent', border: '2px solid white', color: 'white'}}>
+                                        <i class='bx bx-directions'></i> Get Directions
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    {/* Gallery Section */}
+                    <section className="section" style={{background: '#f8fafc'}}>
+                        <h2 className="section-title">Project Gallery</h2>
+                        <p className="section-subtitle">Take a virtual tour of our premium facilities</p>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+                            gap: '1.5rem'
+                        }}>
+                            {[
+                                {title: 'Tennis Court', icon: '🎾', gradient: 'linear-gradient(135deg, #E6A519 0%, #B8860B 100%)'},
+                                {title: 'Basketball Court', icon: '🏀', gradient: 'linear-gradient(135deg, #f093fb 0%, #f5576c 100%)'},
+                                {title: 'Swimming Pool', icon: '🏊‍♂️', gradient: 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)'},
+                                {title: 'Club House', icon: '🏢', gradient: 'linear-gradient(135deg, #43e97b 0%, #38f9d7 100%)'},
+                                {title: 'Flower Park', icon: '🌸', gradient: 'linear-gradient(135deg, #fa709a 0%, #fee140 100%)'},
+                                {title: 'Children\'s Park', icon: '👶', gradient: 'linear-gradient(135deg, #a8edea 0%, #fed6e3 100%)'}
+                            ].map((item, index) => (
+                                <div key={index} style={{
+                                    height: '250px',
+                                    background: item.gradient,
+                                    borderRadius: '12px',
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center',
+                                    justifyContent: 'center',
+                                    color: 'white',
+                                    transition: 'transform 0.3s ease',
+                                    cursor: 'pointer'
+                                }}>
+                                    <div style={{fontSize: '4rem', marginBottom: '1rem'}}>{item.icon}</div>
+                                    <h3 style={{fontSize: '1.5rem', fontWeight: 'bold'}}>{item.title}</h3>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Downloads Section */}
+                    <section className="section">
+                        <h2 className="section-title">Downloads</h2>
+                        <p className="section-subtitle">Get detailed project information and documentation</p>
+                        
+                        <div style={{
+                            display: 'grid',
+                            gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                            gap: '2rem',
+                            maxWidth: '800px',
+                            margin: '0 auto'
+                        }}>
+                            {[
+                                {title: 'Master Plan', icon: '🗺️', desc: 'Detailed layout and planning'},
+                                {title: 'Brochure', icon: '📄', desc: 'Complete project information'},
+                                {title: 'Price List', icon: '💰', desc: 'Updated pricing details'},
+                                {title: 'Location Map', icon: '⌖', desc: 'Connectivity and directions'}
+                            ].map((download, index) => (
+                                <div key={index} style={{
+                                    background: 'white',
+                                    padding: '2rem',
+                                    borderRadius: '12px',
+                                    boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
+                                    textAlign: 'center',
+                                    transition: 'transform 0.3s ease'
+                                }}>
+                                    <div style={{fontSize: '3rem', marginBottom: '1rem'}}>{download.icon}</div>
+                                    <h3 style={{fontSize: '1.25rem', marginBottom: '0.5rem', color: '#1f2937'}}>
+                                        {download.title}
+                                    </h3>
+                                    <p style={{color: '#6b7280', marginBottom: '1.5rem'}}>{download.desc}</p>
+                                    <button style={{
+                                        background: '#2563eb',
+                                        color: 'white',
+                                        border: 'none',
+                                        padding: '0.75rem 1.5rem',
+                                        borderRadius: '8px',
+                                        cursor: 'pointer',
+                                        fontWeight: '600',
+                                        width: '100%'
+                                    }}>
+                                        Download
+                                    </button>
+                                </div>
+                            ))}
+                        </div>
+                    </section>
+
+                    {/* Contact Section */}
+                    <section id="contact" className="section contact">
+                        <h2 className="section-title">Get In Touch</h2>
+                        <p className="section-subtitle">Ready to start your real estate journey? Contact us today!</p>
+                        
+                        <div className="contact-content">
+                            <div className="contact-info">
+                                <h3>Contact Information</h3>
+                                <div className="contact-item">
+                                    <div className="contact-icon"><i class='bx bx-map'></i></div>
+                                    <div>
+                                        <p>123 Real Estate Ave</p>
+                                        <p>City, State 12345</p>
+                                    </div>
+                                </div>
+                                <div className="contact-item">
+                                    <div className="contact-icon"><i class='bx bx-phone'></i></div>
+                                    <div><p>(555) 123-4567</p></div>
+                                </div>
+                                <div className="contact-item">
+                                    <div className="contact-icon"><i class='bx bx-envelope'></i></div>
+                                    <div><p>info@SwarnaBhoomi.com</p></div>
+                                </div>
+                                <div className="contact-item">
+                                    <div className="contact-icon" style={{
+                                        background: 'linear-gradient(135deg, #1877f2, #42a5f5)',
+                                        color: 'white',
+                                        borderRadius: '50%',
+                                        width: '40px',
+                                        height: '40px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '1.2rem',
+                                        fontWeight: 'bold'
+                                    }}><i class='bx bxl-facebook'></i></div>
+                                    <div>
+                                        <a href="https://facebook.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                           style={{color: '#1877f2', textDecoration: 'none', fontWeight: '500'}}>
+                                            Follow us on Facebook
+                                        </a>
+                                    </div>
+                                </div>
+                                <div className="contact-item">
+                                    <div className="contact-icon" style={{
+                                        background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+                                        color: 'white',
+                                        borderRadius: '20%',
+                                        width: '40px',
+                                        height: '40px',
+                                        display: 'flex',
+                                        alignItems: 'center',
+                                        justifyContent: 'center',
+                                        fontSize: '1.2rem',
+                                        fontWeight: 'bold'
+                                    }}><i class='bx bxl-instagram'></i></div>
+                                    <div>
+                                        <a href="https://instagram.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                           style={{color: '#e4405f', textDecoration: 'none', fontWeight: '500'}}>
+                                            Follow us on Instagram
+                                        </a>
+                                    </div>
+                                </div>
+                                
+                                <div style={{marginTop: '2rem'}}>
+                                    <h4 style={{marginBottom: '1rem', color: '#f3f4f6'}}>Connect With Us</h4>
+                                    <div style={{display: 'flex', gap: '1rem', flexWrap: 'wrap'}}>
+                                        <a href="https://facebook.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                           className="social-button facebook">
+                                            <i class='bx bxl-facebook'></i> Facebook
+                                        </a>
+                                        <a href="https://instagram.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                           className="social-button instagram">
+                                            <i class='bx bxl-instagram'></i> Instagram
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <form className="contact-form" onSubmit={handleSubmit}>
+                                <div className="form-group">
+                                    <label className="form-label">Name *</label>
+                                    <input
+                                        type="text"
+                                        name="name"
+                                        value={contactForm.name}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-input ${formErrors.name ? 'error' : contactForm.name && !formErrors.name ? 'success' : ''}`}
+                                        placeholder="Enter your full name"
+                                        disabled={isSubmitting}
+                                    />
+                                    {formErrors.name && <div className="error-message"><i class='bx bx-error-circle'></i> {formErrors.name}</div>}
+                                    {contactForm.name && !formErrors.name && <div className="success-message"><i class='bx bx-check-circle'></i> Name looks good</div>}
+                                </div>
+                                
+                                <div className="form-group">
+                                    <label className="form-label">Email *</label>
+                                    <input
+                                        type="email"
+                                        name="email"
+                                        value={contactForm.email}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-input ${formErrors.email ? 'error' : contactForm.email && !formErrors.email ? 'success' : ''}`}
+                                        placeholder="Enter your email"
+                                        disabled={isSubmitting}
+                                    />
+                                    {formErrors.email && <div className="error-message"><i class='bx bx-error-circle'></i> {formErrors.email}</div>}
+                                    {contactForm.email && !formErrors.email && <div className="success-message"><i class='bx bx-check-circle'></i> Email is valid</div>}
+                                </div>
+                                
+                                <div className="form-group">
+                                    <label className="form-label">Phone Number *</label>
+                                    <input
+                                        type="tel"
+                                        name="phone"
+                                        value={contactForm.phone}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-input ${formErrors.phone ? 'error' : contactForm.phone && !formErrors.phone ? 'success' : ''}`}
+                                        placeholder="Enter your phone number"
+                                        disabled={isSubmitting}
+                                    />
+                                    {formErrors.phone && <div className="error-message"><i class='bx bx-error-circle'></i> {formErrors.phone}</div>}
+                                    {contactForm.phone && !formErrors.phone && <div className="success-message"><i class='bx bx-check-circle'></i> Phone looks good</div>}
+                                </div>
+                                
+                                <div className="form-group">
+                                    <label className="form-label">Message *</label>
+                                    <textarea
+                                        name="message"
+                                        value={contactForm.message}
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        className={`form-textarea ${formErrors.message ? 'error' : contactForm.message && !formErrors.message ? 'success' : ''}`}
+                                        placeholder="Tell us about your property needs..."
+                                        disabled={isSubmitting}
+                                    />
+                                    {formErrors.message && <div className="error-message"><i class='bx bx-error-circle'></i> {formErrors.message}</div>}
+                                    {contactForm.message && !formErrors.message && <div className="success-message"><i class='bx bx-check-circle'></i> Message looks good</div>}
+                                </div>
+                                
+                                <button 
+                                    type="submit" 
+                                    className="submit-button"
+                                    disabled={isSubmitting}
+                                >
+                                    {isSubmitting ? (
+                                        <>
+                                            <span style={{
+                                                display: 'inline-block',
+                                                width: '16px',
+                                                height: '16px',
+                                                border: '2px solid #ffffff',
+                                                borderTop: '2px solid transparent',
+                                                borderRadius: '50%',
+                                                animation: 'spin 1s linear infinite',
+                                                marginRight: '8px'
+                                            }}></span>
+                                            Sending Message...
+                                        </>
+                                    ) : 'Send Message'}
+                                </button>
+                            </form>
+                        </div>
+                    </section>
+
+                    {/* Enhanced Footer */}
+                    <footer style={{background: '#1f2937', color: 'white', padding: '3rem 5% 1rem'}}>
+                        <div style={{maxWidth: '1200px', margin: '0 auto'}}>
+                            <div style={{
+                                display: 'grid',
+                                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+                                gap: '2rem',
+                                marginBottom: '2rem'
+                            }}>
+                                {/* Company Info */}
+                                <div>
+                                    <h3 style={{fontSize: '1.5rem', marginBottom: '1rem', color: '#E6A519'}}>SwarnaBhoomi</h3>
+                                    <p style={{marginBottom: '1rem', lineHeight: '1.6', color: '#d1d5db'}}>
+                                        Your trusted partner in premium real estate. We specialize in luxury villa plots 
+                                        and residential projects with world-class amenities.
+                                    </p>
+                                </div>
+
+                                {/* Quick Links */}
+                                <div>
+                                    <h4 style={{marginBottom: '1rem', color: '#f3f4f6'}}>Quick Menu</h4>
+                                    <ul style={{listStyle: 'none', padding: 0}}>
+                                        {['Home', 'About Us', 'Projects', 'Amenities', 'Location', 'Contact Us'].map((item, index) => (
+                                            <li key={index} style={{marginBottom: '0.5rem'}}>
+                                                <a href={`#${item.replace(' ', '').toLowerCase()}`} 
+                                                   style={{color: '#d1d5db', textDecoration: 'none'}}>
+                                                    {item}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Project Links */}
+                                <div>
+                                    <h4 style={{marginBottom: '1rem', color: '#f3f4f6'}}>Our Projects</h4>
+                                    <ul style={{listStyle: 'none', padding: 0}}>
+                                        {[
+                                            'Premium Villa Plots',
+                                            'Luxury Apartments', 
+                                            'Gated Communities',
+                                            'Commercial Spaces',
+                                            'Investment Properties'
+                                        ].map((project, index) => (
+                                            <li key={index} style={{marginBottom: '0.5rem'}}>
+                                                <a href="#projects" style={{color: '#d1d5db', textDecoration: 'none'}}>
+                                                    {project}
+                                                </a>
+                                            </li>
+                                        ))}
+                                    </ul>
+                                </div>
+
+                                {/* Contact Info */}
+                                <div>
+                                    <h4 style={{marginBottom: '1rem', color: '#f3f4f6'}}>Contact Information</h4>
+                                    <div style={{marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                        <i class='bx bx-phone'></i>
+                                        <a href="tel:+15551234567" style={{color: '#d1d5db', textDecoration: 'none'}}>
+                                            +1 (555) 123-4567
+                                        </a>
+                                    </div>
+                                    <div style={{marginBottom: '0.5rem', display: 'flex', alignItems: 'center', gap: '0.5rem'}}>
+                                        <i class='bx bx-phone'></i>
+                                        <a href="tel:+15559876543" style={{color: '#d1d5db', textDecoration: 'none'}}>
+                                            +1 (555) 987-6543
+                                        </a>
+                                    </div>
+                                    <div style={{marginBottom: '1rem', display: 'flex', alignItems: 'flex-start', gap: '0.5rem'}}>
+                                        <span>@</span>
+                                        <a href="mailto:info@SwarnaBhoomi.com" style={{color: '#d1d5db', textDecoration: 'none'}}>
+                                            info@SwarnaBhoomi.com
+                                        </a>
+                                    </div>
+                                    <div style={{display: 'flex', alignItems: 'flex-start', gap: '0.5rem'}}>
+                                        <span>⌖</span>
+                                        <div style={{color: '#d1d5db'}}>
+                                            123 Real Estate Ave<br/>
+                                            Premium District, City 12345
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            {/* Social Media & Copyright */}
+                            <div style={{
+                                borderTop: '1px solid #374151',
+                                paddingTop: '2rem',
+                                display: 'flex',
+                                justifyContent: 'space-between',
+                                alignItems: 'center',
+                                flexWrap: 'wrap',
+                                gap: '1rem'
+                            }}>
+                                <div style={{display: 'flex', gap: '1rem', alignItems: 'center'}}>
+                                    <span style={{color: '#d1d5db'}}>Follow Us:</span>
+                                    <a href="https://facebook.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                       className="footer-social-icon"
+                                       style={{
+                                           background: 'linear-gradient(135deg, #1877f2, #42a5f5)',
+                                           color: 'white',
+                                           textDecoration: 'none'
+                                       }}>
+                                        <i class='bx bxl-facebook'></i>
+                                    </a>
+                                    <a href="https://instagram.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                       className="footer-social-icon"
+                                       style={{
+                                           background: 'linear-gradient(45deg, #f09433 0%,#e6683c 25%,#dc2743 50%,#cc2366 75%,#bc1888 100%)',
+                                           color: 'white',
+                                           textDecoration: 'none'
+                                       }}>
+                                        <i class='bx bxl-instagram'></i>
+                                    </a>
+                                    <a href="https://twitter.com/SwarnaBhoomi" target="_blank" rel="noopener noreferrer" 
+                                       className="footer-social-icon"
+                                       style={{
+                                           background: 'linear-gradient(135deg, #1da1f2, #42a5f5)',
+                                           color: 'white',
+                                           textDecoration: 'none'
+                                       }}>
+                                        <i class='bx bxl-twitter'></i>
+                                    </a>
+                                </div>
+                                <div style={{color: '#9ca3af', fontSize: '0.9rem'}}>
+                                    &copy; 2024 SwarnaBhoomi. All Rights Reserved | Privacy Policy | Terms & Conditions
+                                </div>
+                            </div>
+                        </div>
+                    </footer>
+
+                    {/* Floating Contact Button */}
+                    <button 
+                        className="floating-contact"
+                        onClick={() => scrollToSection('contact')}
+                    >
+                        <i class='bx bx-message-rounded-dots'></i> Contact Us
+                    </button>
+
+                    {/* Floating Social Media Widget */}
+                    <div className="floating-social">
+                                                <a 
+                            href="https://facebook.com/SwarnaBhoomi" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="floating-social-button facebook"
+                            title="Follow us on Facebook"
+                        >
+                            <i class='bx bxl-facebook'></i>
+                        </a>
+                        <a 
+                            href="https://instagram.com/SwarnaBhoomi" 
+                            target="_blank" 
+                            rel="noopener noreferrer"
+                            className="floating-social-button instagram"
+                            title="Follow us on Instagram"
+                        >
+                            <i class='bx bxl-instagram'></i>
+                        </a>
+                    </div>
+
+                    {/* Admin Button */}
+                    {adminVisible && (
+                        <button 
+                            className="admin-toggle"
+                            onClick={() => setShowAdmin(true)}
+                        >
+                            🔧 Admin ({submissions.length})
+                        </button>
+                    )}
+
+                    {/* Admin Panel */}
+                    {showAdmin && (
+                        <div className="admin-overlay" onClick={(e) => e.target === e.currentTarget && setShowAdmin(false)}>
+                            <div className="admin-panel">
+                                <div className="admin-header">
+                                    <h2><i class='bx bx-chart'></i> Contact Submissions Management</h2>
+                                    <p>Total Submissions: {submissions.length}</p>
+                                    <button 
+                                        className="admin-button"
+                                        onClick={() => {
+                                            try {
+                                                contactDB.exportToCSV();
+                                                alert('✅ Data exported successfully!');
+                                            } catch (error) {
+                                                alert('❌ ' + error.message);
+                                            }
+                                        }}
+                                    >
+                                        <i class='bx bx-download'></i> Export to CSV
+                                    </button>
+                                    <button 
+                                        className="admin-button"
+                                        onClick={() => setShowAdmin(false)}
+                                    >
+                                        ✕ Close Panel
+                                    </button>
+                                </div>
+                                
+                                <div style={{padding: '1.5rem'}}>
+                                    {submissions.length === 0 ? (
+                                        <div style={{textAlign: 'center', padding: '2rem', color: '#6b7280'}}>
+                                            <p>📭 No contact submissions yet.</p>
+                                            <p>Submissions will appear here once customers use the contact form.</p>
+                                        </div>
+                                    ) : (
+                                        <div style={{maxHeight: '400px', overflowY: 'auto'}}>
+                                            {submissions.slice().reverse().map(sub => (
+                                                <div key={sub.id} style={{
+                                                    border: '1px solid #e5e7eb',
+                                                    padding: '1rem',
+                                                    margin: '0.5rem 0',
+                                                    borderRadius: '8px',
+                                                    background: '#f9fafb'
+                                                }}>
+                                                    <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '0.5rem'}}>
+                                                        <strong style={{color: '#E6A519'}}>#{sub.id}</strong>
+                                                        <span style={{fontSize: '0.875rem', color: '#6b7280'}}>{sub.timestamp}</span>
+                                                    </div>
+                                                    <div style={{marginBottom: '0.5rem'}}>
+                                                        <strong>👤 Name:</strong> {sub.name}
+                                                    </div>
+                                                    <div style={{marginBottom: '0.5rem'}}>
+                                                        <strong><i class='bx bx-envelope'></i> Email:</strong> <a href={`mailto:${sub.email}`} style={{color: '#E6A519'}}>{sub.email}</a>
+                                                    </div>
+                                                    <div style={{marginBottom: '0.5rem'}}>
+                                                        <strong><i class='bx bx-phone'></i> Phone:</strong> <a href={`tel:${sub.phone}`} style={{color: '#E6A519'}}>{sub.phone}</a>
+                                                    </div>
+                                                    <div style={{marginBottom: '0.5rem'}}>
+                                                        <strong><i class='bx bx-message-rounded-dots'></i> Message:</strong> {sub.message}
+                                                    </div>
+                                                    <div>
+                                                        <strong><i class='bx bx-clipboard'></i> Status:</strong> 
+                                                        <span style={{
+                                                            background: sub.status === 'New' ? '#FEF3CD' : '#d1fae5',
+                                                            color: sub.status === 'New' ? '#E6A519' : '#065f46',
+                                                            padding: '0.25rem 0.5rem',
+                                                            borderRadius: '4px',
+                                                            marginLeft: '0.5rem',
+                                                            fontSize: '0.875rem'
+                                                        }}>
+                                                            {sub.status}
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
+        // Render the complete app
+        const root = ReactDOM.createRoot(document.getElementById('root'));
+        root.render(<RealEstateWebsite />);
+    </script>
+</body>
+</html> 
